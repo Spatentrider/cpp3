@@ -56,8 +56,6 @@ std::ostream& operator<<(std::ostream &out, const Fixed &fixed)
 	return out;
 }
 
-/*Comparison Operator*/
-
 bool Fixed::operator>(const Fixed &other) const
 {
 	return this->_fixed_point_number > other._fixed_point_number;
@@ -88,8 +86,6 @@ bool Fixed::operator!=(const Fixed &other) const
 	return this->_fixed_point_number != other._fixed_point_number;
 }
 
-/*Arithmetic operators*/
-
 Fixed Fixed::operator+(const Fixed &other) const
 {
 	return Fixed(this->toFloat() + other.toFloat());
@@ -109,8 +105,6 @@ Fixed Fixed::operator/(const Fixed &other) const
 {
 	return Fixed(this->toFloat() / other.toFloat());
 }
-
-/*Increment/Decrement*/
 
 Fixed& Fixed::operator++()
 {
@@ -137,8 +131,6 @@ Fixed Fixed::operator--(int)
 	--(*this);
 	return tmp;
 }
-
-/*Min/Max*/
 
 Fixed Fixed::min(Fixed &a, Fixed &b)
 {
