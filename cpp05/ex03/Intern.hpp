@@ -6,7 +6,8 @@
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 
-class Intern {
+class Intern 
+{
 	public:
 		Intern();
 		Intern( const Intern& other );
@@ -15,7 +16,8 @@ class Intern {
 
 		AForm* makeForm(const std::string& formName, const std::string& target) const;
 
-		class FormDoesNotExistException : public std::exception {
+		class FormDoesNotExistException : public std::exception 
+		{
 			public:
 				virtual const char* what() const throw();
 		};

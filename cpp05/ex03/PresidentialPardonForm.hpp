@@ -3,7 +3,8 @@
 
 # include "AForm.hpp"
 
-class President : public AForm {
+class President : public AForm 
+{
 	private:
 		std::string	_target;
 

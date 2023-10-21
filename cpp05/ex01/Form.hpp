@@ -5,7 +5,8 @@
 
 class Bureaucrat;
 
-class Form {
+class Form 
+{
 	private:
 		const std::string	_name;
 		bool				_signed;
@@ -26,11 +27,13 @@ class Form {
 
 		void		beSigned(Bureaucrat& bureaucrat);
 
-		class GradeTooHighException : public std::exception {
+		class GradeTooHighException : public std::exception 
+		{
 			public:
 				virtual const char* what() const throw();
 		};
-		class GradeTooLowException : public std::exception {
+		class GradeTooLowException : public std::exception 
+		{
 			public:
 				virtual const char* what() const throw();
 		};

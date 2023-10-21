@@ -4,7 +4,8 @@
 #include "AForm.hpp"
 #include <fstream>
 
-class Shrubbery : public AForm {
+class Shrubbery : public AForm 
+{
 	private:
 		std::string	_target;
 

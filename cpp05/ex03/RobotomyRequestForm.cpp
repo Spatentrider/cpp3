@@ -1,33 +1,37 @@
 #include "RobotomyRequestForm.hpp"
 
-Robotomy::Robotomy() :
-		AForm("Robotomy", 72, 45), _target("Robotomy") {
+Robotomy::Robotomy() : AForm("Robotomy", 72, 45), _target("Robotomy") 
+{
 	// std::cout << "Robotomy: constructor called" << std::endl;
 }
 
-Robotomy::Robotomy(const std::string& target) :
-		AForm("Robotomy_" + target, 72, 45), _target(target) {
+Robotomy::Robotomy(const std::string& target) : AForm("Robotomy_" + target, 72, 45), _target(target) 
+{
 	// std::cout << "Robotomy: initialize constructor called" << std::endl;
 }
 
-Robotomy::Robotomy(const Robotomy& other) :
-		AForm(other), _target(other._target) {
+Robotomy::Robotomy(const Robotomy& other) : AForm(other), _target(other._target) 
+{
 	// std::cout << "Robotomy: copy constructor called" << std::endl;
 }
 
-Robotomy& Robotomy::operator=(const Robotomy& other) {
-	if (this != &other) {
+Robotomy& Robotomy::operator=(const Robotomy& other) 
+{
+	if (this != &other) 
+	{
 		AForm::operator=(other);
 		this->_target = other._target;
 	}
 	return *this;
 }
 
-Robotomy::~Robotomy() {
-	// std::cout << "Robotomy: desctructor called" << std::endl;
+Robotomy::~Robotomy() 
+{
+	// std::cout << "Robotomy: destructor called" << std::endl;
 }
 
-void	Robotomy::execute(Bureaucrat const& executor) const {
+void	Robotomy::execute(Bureaucrat const& executor) const 
+{
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	if (!this->getSigned())

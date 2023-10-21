@@ -3,7 +3,8 @@
 
 # include "AForm.hpp"
 
-class Robotomy : public AForm {
+class Robotomy : public AForm 
+{
 	private:
 		std::string	_target;
 
