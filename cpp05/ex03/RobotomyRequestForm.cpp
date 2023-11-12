@@ -36,8 +36,9 @@ void	Robotomy::execute(Bureaucrat const& executor) const
 		throw AForm::GradeTooLowException();
 	if (!this->getSigned())
 		throw AForm::NotSignedException();
-	static int	i = 0;
-	if (i % 2 == 0)
+	std::srand(static_cast<unsigned>(time(0)));
+    int randomValue = std::rand() % 2;
+    if (randomValue == 0)
 		std::cout << "Vrrrrrrrrrrrrrrrrrr! " << executor.getName() << " has been robotomized successfully!" << std::endl;
 	else
 		std::cout << executor.getName() << ": robotomy failed.." << std::endl;

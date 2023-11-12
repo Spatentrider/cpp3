@@ -67,8 +67,7 @@ void	identify(Base& p)
 }
 
 
-int	main() 
-{
+int	main() {
 	srand(static_cast<unsigned>(time(0)));
 
 	Base* first = generate();
