@@ -10,12 +10,12 @@ extern std::string special[6];
 
 class ScalarConverter{
 	private:
+		ScalarConverter();
+		ScalarConverter( const ScalarConverter& other );
 		static void char_converter( const std::string& input );
 		static void number_converter( const std::string& input );
 
 	public:
-		ScalarConverter();
-		ScalarConverter( const ScalarConverter& other );
 		~ScalarConverter();
 		ScalarConverter& operator=( const ScalarConverter& other );
 
