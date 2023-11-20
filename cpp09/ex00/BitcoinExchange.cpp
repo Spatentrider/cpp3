@@ -34,11 +34,8 @@ Bitcoin& Bitcoin::operator=(const Bitcoin& other)
 
 Bitcoin::~Bitcoin() {}
 
-// -------------------------------BitcoinExchange---------------------------------------------
-
 int Bitcoin::bitExchange(char* argv) 
 {
-	// Open the input.txt file
 	std::ifstream input(argv);
 	if (!input.good()) 
 	{
@@ -46,7 +43,6 @@ int Bitcoin::bitExchange(char* argv)
 		return 1;
 	}
 
-	// Iterate through each line in the file
 	std::string line;
 	std::getline(input, line);
 	while (std::getline(input, line)) 
@@ -59,7 +55,6 @@ int Bitcoin::bitExchange(char* argv)
 
 void Bitcoin::check_convert(std::string line) 
 {
-	// Check if the line has the format "y-m-d |"
 	if (!check_data(line)) 
 	{
 		std::cout << "Error: bad input => " << line << std::endl;
@@ -69,21 +64,18 @@ void Bitcoin::check_convert(std::string line)
 	std::string dataLine = line.substr(0, 10);
 	std::string valueStr = line.substr(13, line.size() - 13);
 
-	// Check the date format
 	if (!check_time(dataLine)) 
 	{
 		std::cout << "Error: bad input => " << line << std::endl;
 		return;
 	}
 
-	// Check the value format
 	if (!check_value(valueStr)) 
 	{
 		std::cout << "Error: not a positive number" << std::endl;
 		return;
 	}
 
-	// Convert the value to float
 	float valueFloat = 0.0f;
 	std::istringstream(valueStr) >> valueFloat;
 	if (valueFloat > 1000) 
@@ -92,14 +84,12 @@ void Bitcoin::check_convert(std::string line)
 		return;
 	}
 
-	// Search the data in the map[key] and return map[]value
 	std::map<std::string, float>::iterator it = _data.upper_bound(dataLine);
 	if (it != _data.begin())
 		it--;
 	std::cout << dataLine << " => " << valueFloat << " = " << valueFloat * it->second << std::endl;
 }
 
-// Must be in the format "0000-00-00 | "
 bool	Bitcoin::check_data(std::string data) 
 {
 	if (data.size() < 13) 
@@ -120,7 +110,6 @@ bool	Bitcoin::check_data(std::string data)
 	return true;
 }
 
-// Check for a valid year-month-day format
 bool Bitcoin::check_time(std::string data) 
 {
 	std::string year = data.substr(0, 4);
@@ -141,7 +130,6 @@ bool Bitcoin::check_time(std::string data)
 	return true;
 }
 
-// Check if the value is a valid positive and only digit number
 bool	Bitcoin::check_value(std::string value) 
 {
 	int dot = 0;

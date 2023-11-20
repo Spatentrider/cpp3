@@ -2,23 +2,27 @@
 
 RPN::RPN() {}
 
-RPN::RPN(const RPN& other) {
+RPN::RPN(const RPN& other) 
+{
 	return;
 }
 
-RPN& RPN::operator=(const RPN& other) {
+RPN& RPN::operator=(const RPN& other) 
+{
 	return *this;
 }
 
 RPN::~RPN() {}
 
-int RPN::calc(const std::string& expression) {
+int RPN::calc(const std::string& expression) 
+{
 	std::istringstream iss(expression);
 	std::string token;
 	std::stack<int> stack;
 
 	while (iss >> token) {
-		if (token == "+" || token == "-" || token == "*" || token == "/") {
+		if (token == "+" || token == "-" || token == "*" || token == "/") 
+		{
 			if (stack.size() < 2)
 				throw std::runtime_error("Invalid expression");
 
@@ -33,16 +37,20 @@ int RPN::calc(const std::string& expression) {
 				stack.push(a - b);
 			else if (token == "*")
 				stack.push(a * b);
-			else if (token == "/") {
+			else if (token == "/") 
+			{
 				if (b == 0)
 					throw std::runtime_error("Division by zero");
 				stack.push(a / b);
 			}
-		} else {
+		} 
+		else 
+		{
 			int i = 0;
 			if (token[i] == '-')
 				i++;
-			while (token[i]) {
+			while (token[i]) 
+			{
 				if (!isdigit(token[i]) && token[0] != '-')
 					throw std::runtime_error("Only digit");
 				i++;
