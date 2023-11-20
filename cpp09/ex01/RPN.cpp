@@ -48,20 +48,27 @@ int RPN::calc(const std::string& expression)
 		{
 			int i = 0;
 			if (token[i] == '-')
-				i++;
-			while (token[i]) 
 			{
-				if (!isdigit(token[i]) && token[0] != '-')
-					throw std::runtime_error("Only digit");
 				i++;
 			}
+
+			while (token[i]) 
+			{
+				if (!isdigit(token[i])) 
+				{
+					throw std::runtime_error("Only digit");
+				}
+				i++;
+			}
+
 			int num = std::atoi(token.c_str());
 			if (num > 9 || num < -9)
-				throw std::runtime_error("Numbers must be less than 10 || greater than -10");
+			{
+				throw std::runtime_error("Numbers must be less than 10 or greater than -10");
+			}
 			stack.push(num);
 		}
 	}
-
 	if (stack.size() != 1)
 		throw std::runtime_error("Invalid expression");
 	return stack.top();
